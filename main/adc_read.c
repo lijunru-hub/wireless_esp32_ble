@@ -39,7 +39,7 @@ typedef unsigned long int uint32;
 
 static adc_oneshot_unit_handle_t adc_handle;
 
-static int adc_raw[3];
+static int adc_raw[3] = {0};
 static int voltage[3];
 static bool example_adc_calibration_init(adc_unit_t unit, adc_atten_t atten, adc_cali_handle_t *out_handle);
 static void example_adc_calibration_deinit(adc_cali_handle_t handle);
@@ -144,11 +144,11 @@ void adc_read_task(void* arg)
     }
 }
 
-void app_main(void) {
-    gatts_table_init();
-    adc_init();
-    xTaskCreate(adc_read_task, "adc_read_task", 4*1024, NULL, 5, &THhandle);
-}
+// void app_main(void) {
+//     gatts_table_init();
+//     adc_init();
+//     xTaskCreate(adc_read_task, "adc_read_task", 4*1024, NULL, 5, &THhandle);
+// }
 
 
 
